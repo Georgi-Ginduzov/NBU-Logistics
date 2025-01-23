@@ -1,25 +1,25 @@
 package com.example.logistics.models;
 
+import com.example.logistics.models.users.Customer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Data;
 
 import java.io.Serializable;
 
 @Entity
 @Table(name = "shipments")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Data
 public class Shipment implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private Double price;
 
-    public Long getId() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 }

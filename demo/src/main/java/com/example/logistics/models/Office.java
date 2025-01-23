@@ -1,33 +1,23 @@
 package com.example.logistics.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
 @Table(name = "offices")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Data
 public class Office {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String location;
 
+    @Column(nullable = false)
+    private String address;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
+    @Column(nullable = false, unique = true)
+    private String phone;
 }
+

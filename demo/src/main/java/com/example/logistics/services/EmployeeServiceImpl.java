@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
     public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
@@ -36,8 +36,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.save(employee);
     }
 
-    public boolean deleteEmployee(Long id) {
+    public void deleteEmployee(Long id) {
         employeeRepository.deleteById(id);
-        return employeeRepository.existsById(id);
+        employeeRepository.existsById(id);
     }
 }

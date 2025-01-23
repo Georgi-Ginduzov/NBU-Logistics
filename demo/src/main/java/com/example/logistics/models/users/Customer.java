@@ -8,15 +8,14 @@ import jakarta.persistence.*;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Column(nullable = false)
+    private String name;
 
-    public Long getId() {
-        return id;
-    }
+    @Column
+    private String phoneNumber;
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false, unique = true)
