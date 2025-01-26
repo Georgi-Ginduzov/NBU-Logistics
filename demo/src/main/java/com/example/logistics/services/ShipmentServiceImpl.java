@@ -5,11 +5,12 @@ import com.example.logistics.models.Shipment;
 import com.example.logistics.repositories.interfaces.ShipmentRepository;
 import com.example.logistics.services.interfaces.ShipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+@Service
 public class ShipmentServiceImpl implements ShipmentService {
     private final ShipmentRepository _shipmentRepo;
 

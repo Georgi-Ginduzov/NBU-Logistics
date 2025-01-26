@@ -20,6 +20,10 @@ public class Shipment implements Serializable {
     private Double price;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @JoinColumn(name = "sender_id", nullable = false)
+    private Customer sender;
+
+    @ManyToOne
+    @JoinColumn(name = "recipient_id", nullable = false)
+    private Customer recipient;
 }
